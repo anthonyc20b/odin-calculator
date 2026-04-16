@@ -1,20 +1,23 @@
-const operationAdd = function (a, b) {return a + b;};
+const operationAdd = function (a, b){return a + b;};
 const operationSubtract = function (a, b){return a - b;};
 const operationMultiply = function (a, b){return a * b;};
 const operationDivide = function (a, b){return a / b;};
 
 const numberDisplay = document.querySelector("#current-number");
+let currentDisplayNumber = "";
 
 const userNumberOne = document.querySelectorAll(".btn-number");
     for (let button of userNumberOne){
         button.addEventListener("click", () => {
-            const numberChoice = button.textContent
-            console.log("The first number is:", numberChoice);
-            numberDisplay.textContent = numberChoice;
+            const numberSelect = button.textContent
+            console.log("The first number is:", numberSelect);
+            currentDisplayNumber = currentDisplayNumber + numberSelect;
+            numberDisplay.textContent = currentDisplayNumber;
         })
+        // parseInt for later
     }
 
-const userOperator = "";
+const userOperator = document.querySelectorAll();
 
 
 let userNumberTwo = 4;
