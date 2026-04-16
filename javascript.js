@@ -31,6 +31,8 @@ const userOperator = document.querySelectorAll(".btn-operator");
         button.addEventListener("click", () => {
             if (firstDisplayNumber != "" && operatorChosen === true && secondDisplayNumber != ""){ // Checks to make sure that if two operators are selected it runs the operate() function to allow chain expressions
                 let finalResult = operate();
+
+                let length = finalResult.toString().length
                 console.log("The final result is:", finalResult);
                 numberDisplay.textContent = finalResult + " " + operatorSelect;
                 firstDisplayNumber = finalResult; // Shows the final result as the current number so you can keep calculating on screen
@@ -69,16 +71,20 @@ finalCalculation.addEventListener("click", () => {
     secondDisplayNumber = "";
 })
 
+const disableButtons = function (){
+    userNumberOne.forEach(button => {button.disabled = true;});
+    userNumberTwo.forEach(button => {button.disabled = true;});
+    userOperator.forEach(button => {button.disabled = true;});
+    finalCalculation.disabled = true;
+}
+
 const operate = function (){
         let a = stringConvert;
         let b = stringConvertTwo;
         // Checks to see if there is division by 0 in all cases and disables the calculator, requiring the user to restart it.
         if (a === 0 && b === 0 && operatorSelect === "/" || b === 0 && operatorSelect === "/"){
-            userNumberOne.forEach(button => {button.disabled = true;});
-            userNumberTwo.forEach(button => {button.disabled = true;});
-            userOperator.forEach(button => {button.disabled = true;});
-            finalCalculation.disabled = true;
-            return "Yeah right, nice try!"
+            disableButtons();
+            return "Yeah right nice try!";
         } 
 
         if (operatorSelect === "+"){
@@ -90,10 +96,7 @@ const operate = function (){
         } else if (operatorSelect === "/") {
             return operationDivide(a, b);
         } else {
-            userNumberOne.forEach(button => {button.disabled = true;});
-            userNumberTwo.forEach(button => {button.disabled = true;});
-            userOperator.forEach(button => {button.disabled = true;});
-            finalCalculation.disabled = true;
-            return "Error: Invalid Selection";
+            disableButtons();
+            return "Error!";
         }
     };
