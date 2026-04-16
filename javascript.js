@@ -12,6 +12,8 @@ let operatorChosen = false; // Used to conditionally check if we are selecting n
 let operatorSelect = ""; // Used to store what operator the user selected
 
 const numberDisplay = document.querySelector("#current-number");
+
+// Gets the first number from the user based on selection, updates the display, and allows for multiple digit numbers
 const userNumberOne = document.querySelectorAll(".btn-number");
     for (let button of userNumberOne){
         button.addEventListener("click", () => {
@@ -27,7 +29,7 @@ const userNumberOne = document.querySelectorAll(".btn-number");
 const userOperator = document.querySelectorAll(".btn-operator");
     for (let button of userOperator){
         button.addEventListener("click", () => {
-            if (firstDisplayNumber != "" && operatorChosen === true && secondDisplayNumber != ""){
+            if (firstDisplayNumber != "" && operatorChosen === true && secondDisplayNumber != ""){ // Checks to make sure that if two operators are selected it runs the operate() function to allow chain expressions
                 let finalResult = operate();
                 console.log("The final result is:", finalResult);
                 numberDisplay.textContent = finalResult + " " + operatorSelect;
@@ -42,7 +44,7 @@ const userOperator = document.querySelectorAll(".btn-operator");
         })
     }
 
-
+// Gets the second number from the user and converts it to a string from the button output
 const userNumberTwo = document.querySelectorAll(".btn-number");
     for (let button of userNumberTwo) {
         button.addEventListener("click", () => {
@@ -56,6 +58,7 @@ const userNumberTwo = document.querySelectorAll(".btn-number");
         }})
     }
 
+// Equals button logic, listens for the click on = and runs the operate function while updating the variables to allow chain expressions
 const finalCalculation = document.querySelector("#btn-equals");
 finalCalculation.addEventListener("click", () => {
     let finalResult = operate();
@@ -69,16 +72,14 @@ finalCalculation.addEventListener("click", () => {
 const operate = function (){
         let a = stringConvert;
         let b = stringConvertTwo;
-        if (a === 0 && b === 0 && operatorSelect === "/"){
-            
+        // Checks to see if there is division by 0 in all cases and disables the calculator, requiring the user to restart it.
+        if (a === 0 && b === 0 && operatorSelect === "/" || b === 0 && operatorSelect === "/"){
             userNumberOne.forEach(button => {button.disabled = true;});
             userNumberTwo.forEach(button => {button.disabled = true;});
             userOperator.forEach(button => {button.disabled = true;});
-
             finalCalculation.disabled = true;
-
             return "Yeah right, nice try!"
-        }
+        } 
 
         if (operatorSelect === "+"){
             return operationAdd(a, b);
@@ -89,6 +90,10 @@ const operate = function (){
         } else if (operatorSelect === "/") {
             return operationDivide(a, b);
         } else {
+            userNumberOne.forEach(button => {button.disabled = true;});
+            userNumberTwo.forEach(button => {button.disabled = true;});
+            userOperator.forEach(button => {button.disabled = true;});
+            finalCalculation.disabled = true;
             return "Error: Invalid Selection";
         }
     };
