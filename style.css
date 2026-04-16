@@ -1,0 +1,14 @@
+.calculator-body {
+    /* border: 2px solid red; */
+    /* display: flex; */
+}
+
+button {
+    background-color: honeydew;
+    border: .5px solid gray;
+    padding: 25px;
+}
+
+.calculator-display {
+    background-color: lightgray;
+}

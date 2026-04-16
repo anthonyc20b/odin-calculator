@@ -27,12 +27,21 @@ const userNumberOne = document.querySelectorAll(".btn-number");
 const userOperator = document.querySelectorAll(".btn-operator");
     for (let button of userOperator){
         button.addEventListener("click", () => {
+            if (firstDisplayNumber != "" && operatorChosen === true && secondDisplayNumber != ""){
+                let finalResult = operate();
+                console.log("The final result is:", finalResult);
+                numberDisplay.textContent = finalResult + " " + operatorSelect;
+                firstDisplayNumber = finalResult; // Shows the final result as the current number so you can keep calculating on screen
+                stringConvert = finalResult; // Updates the backend logic to make the correct mathematical calculation
+                secondDisplayNumber = "";
+            }
             operatorSelect = button.textContent;
             console.log("The operator selection is:", operatorSelect);
-            numberDisplay.textContent = stringConvert + " " + operatorSelect;
-            return operatorChosen = true;
+            numberDisplay.textContent = firstDisplayNumber + " " + operatorSelect;
+            operatorChosen = true;
         })
     }
+
 
 const userNumberTwo = document.querySelectorAll(".btn-number");
     for (let button of userNumberTwo) {
@@ -40,17 +49,36 @@ const userNumberTwo = document.querySelectorAll(".btn-number");
             if (operatorChosen === true){
                 let numberSelect = button.textContent;
                 secondDisplayNumber = secondDisplayNumber + numberSelect;
-                numberDisplay.textContent = stringConvert + " " + operatorSelect + " " + secondDisplayNumber;
+                numberDisplay.textContent = firstDisplayNumber + " " + operatorSelect + " " + secondDisplayNumber;
                 stringConvertTwo = parseInt(secondDisplayNumber)
                 console.log("The second number is:", secondDisplayNumber);
+                
         }})
     }
 
 const finalCalculation = document.querySelector("#btn-equals");
 finalCalculation.addEventListener("click", () => {
-    const operate = function (){
+    let finalResult = operate();
+    console.log("The final result is:", finalResult);
+    numberDisplay.textContent = finalResult;
+    stringConvert = finalResult; // Sets the final result as the current number so you can keep calculating
+    firstDisplayNumber = finalResult; // Shows the final result as the current number so you can keep calculating on screen
+    secondDisplayNumber = "";
+})
+
+const operate = function (){
         let a = stringConvert;
         let b = stringConvertTwo;
+        if (a === 0 && b === 0 && operatorSelect === "/"){
+            
+            userNumberOne.forEach(button => {button.disabled = true;});
+            userNumberTwo.forEach(button => {button.disabled = true;});
+            userOperator.forEach(button => {button.disabled = true;});
+
+            finalCalculation.disabled = true;
+
+            return "Yeah right, nice try!"
+        }
 
         if (operatorSelect === "+"){
             return operationAdd(a, b);
@@ -64,7 +92,3 @@ finalCalculation.addEventListener("click", () => {
             return "Error: Invalid Selection";
         }
     };
-    let finalResult = operate();
-    console.log("The final result is:", finalResult);
-    numberDisplay.textContent = finalResult;
-})
