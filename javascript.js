@@ -31,8 +31,6 @@ const userOperator = document.querySelectorAll(".btn-operator");
         button.addEventListener("click", () => {
             if (firstDisplayNumber != "" && operatorChosen === true && secondDisplayNumber != ""){ // Checks to make sure that if two operators are selected it runs the operate() function to allow chain expressions
                 let finalResult = operate();
-
-                let length = finalResult.toString().length
                 console.log("The final result is:", finalResult);
                 numberDisplay.textContent = finalResult + " " + operatorSelect;
                 firstDisplayNumber = finalResult; // Shows the final result as the current number so you can keep calculating on screen
@@ -100,3 +98,6 @@ const operate = function (){
             return "Error!";
         }
     };
+
+
+    let length = finalResult.toString().length
