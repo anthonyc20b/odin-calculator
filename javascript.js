@@ -30,7 +30,9 @@ const userOperator = document.querySelectorAll(".btn-operator");
         button.addEventListener("click", () => {
             if (firstDisplayNumber != "" && operatorChosen === true && secondDisplayNumber != ""){ // Checks to make sure that if two operators are selected it runs the operate() function to allow chain expressions
                 let finalResult = operate();
-                numberDisplay.textContent = finalResult + " " + operatorSelect;
+
+                finalResult = displayLimit(finalResult); // Check the display limit and ensure the number returns less than 16 and gets rounded up                numberDisplay.textContent = finalResult + " " + operatorSelect;
+                
                 firstDisplayNumber = finalResult; // Shows the final result as the current number so you can keep calculating on screen
                 stringConvert = finalResult; // Updates the backend logic to make the correct mathematical calculation
                 secondDisplayNumber = "";
@@ -58,6 +60,9 @@ const userNumberTwo = document.querySelectorAll(".btn-number");
 const finalCalculation = document.querySelector("#btn-equals");
 finalCalculation.addEventListener("click", () => {
     let finalResult = operate();
+
+    finalResult = displayLimit(finalResult); // Check the display limit and ensure the number returns less than 16 and gets rounded up
+
     numberDisplay.textContent = finalResult;
     stringConvert = finalResult; // Sets the final result as the current number so you can keep calculating
     firstDisplayNumber = finalResult; // Shows the final result as the current number so you can keep calculating on screen
@@ -94,5 +99,17 @@ const operate = function (){
         }
     };
 
-
-    let length = finalResult.toString().length
+    // Check that the length of the return is not greater than 16 digits (Screen display limits)
+    const displayLimit = function (finalResult){
+    let totalLength = finalResult.toString().length
+    let stringSplit = finalResult.toString().split(".");
+    let lengthBeforeDecim = stringSplit[0].length;
+    if (totalLength > 16) {
+        let roundingNum = 16 - lengthBeforeDecim;
+        roundedFinal = finalResult.toFixed(roundingNum);
+        finalResult = parseFloat(roundedFinal);
+        return finalResult;
+    } else {
+        return finalResult;
+    }
+    }
