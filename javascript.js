@@ -22,7 +22,6 @@ const userNumberOne = document.querySelectorAll(".btn-number");
                 firstDisplayNumber = firstDisplayNumber + numberSelect;
                 numberDisplay.textContent = firstDisplayNumber;
                 stringConvert = parseInt(firstDisplayNumber)
-                console.log("The first number is:", firstDisplayNumber);
         }})
     }
 
@@ -31,14 +30,12 @@ const userOperator = document.querySelectorAll(".btn-operator");
         button.addEventListener("click", () => {
             if (firstDisplayNumber != "" && operatorChosen === true && secondDisplayNumber != ""){ // Checks to make sure that if two operators are selected it runs the operate() function to allow chain expressions
                 let finalResult = operate();
-                console.log("The final result is:", finalResult);
                 numberDisplay.textContent = finalResult + " " + operatorSelect;
                 firstDisplayNumber = finalResult; // Shows the final result as the current number so you can keep calculating on screen
                 stringConvert = finalResult; // Updates the backend logic to make the correct mathematical calculation
                 secondDisplayNumber = "";
             }
             operatorSelect = button.textContent;
-            console.log("The operator selection is:", operatorSelect);
             numberDisplay.textContent = firstDisplayNumber + " " + operatorSelect;
             operatorChosen = true;
         })
@@ -53,7 +50,6 @@ const userNumberTwo = document.querySelectorAll(".btn-number");
                 secondDisplayNumber = secondDisplayNumber + numberSelect;
                 numberDisplay.textContent = firstDisplayNumber + " " + operatorSelect + " " + secondDisplayNumber;
                 stringConvertTwo = parseInt(secondDisplayNumber)
-                console.log("The second number is:", secondDisplayNumber);
                 
         }})
     }
@@ -62,7 +58,6 @@ const userNumberTwo = document.querySelectorAll(".btn-number");
 const finalCalculation = document.querySelector("#btn-equals");
 finalCalculation.addEventListener("click", () => {
     let finalResult = operate();
-    console.log("The final result is:", finalResult);
     numberDisplay.textContent = finalResult;
     stringConvert = finalResult; // Sets the final result as the current number so you can keep calculating
     firstDisplayNumber = finalResult; // Shows the final result as the current number so you can keep calculating on screen
