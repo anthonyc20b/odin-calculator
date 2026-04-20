@@ -12,6 +12,7 @@ body {
     height: auto;
     display: flex;
     flex-direction: column;
+    background-color: lightgray;
 }
 
 .calculator-buttons {
@@ -53,5 +54,6 @@ button {
     background-color: lightgray;
     flex-basis: 0%;
     border: 2px solid black;
+    border-radius: 12px;
     text-align: center;
 }
