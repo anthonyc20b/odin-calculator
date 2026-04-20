@@ -136,8 +136,8 @@ const operate = function (){
         numberDisplay.textContent = firstDisplayNumber + " " + operatorSelect + " " + secondDisplayNumber;
         stringConvertTwo = parseInt(secondDisplayNumber)
     }
-
-        if (firstDisplayNumber === ""){
-            numberDisplay.textContent = "0";
-        }
+    if (firstDisplayNumber === ""){
+        numberDisplay.textContent = "0";
+    }
+    
     })
