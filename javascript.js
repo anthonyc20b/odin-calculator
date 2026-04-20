@@ -3,6 +3,7 @@ const operationAdd = function (a, b){return a + b;};
 const operationSubtract = function (a, b){return a - b;};
 const operationMultiply = function (a, b){return a * b;};
 const operationDivide = function (a, b){return a / b;};
+const operationModulo = function (a, b){return ((a % b) + b) % b;};
 
 let firstDisplayNumber = ""; // Used to show the current state of the calculator, updates the DOM for number 1
 let secondDisplayNumber = ""; // Used to show the current state of the calculator, updates the DOM for number 2
@@ -93,6 +94,8 @@ const operate = function (){
             return operationMultiply(a, b);
         } else if (operatorSelect === "/") {
             return operationDivide(a, b);
+        } else if (operatorSelect === "%") {
+            return operationModulo(a, b);
         } else {
             disableButtons();
             return "Error!";
