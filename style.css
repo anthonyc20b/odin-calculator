@@ -21,7 +21,7 @@ body {
 }
 
 .row-one {
-    display: flex
+    display: flex;
 }
 
 .row-two {
@@ -62,9 +62,16 @@ button:hover {
     background-color: rgb(188, 200, 188);
 }
 
-.btn-operator {
+.btn-operator, #btn-equals {
     background-color: orange;
 }
-.btn-operator:hover {
+.btn-operator:hover, #btn-equals:hover {
     background-color: rgb(178, 116, 1);
+}
+
+#btn-modulo {
+    background-color: honeydew;
+}
+#btn-modulo:hover {
+    background-color: rgb(188, 200, 188);
 }
