@@ -22,7 +22,7 @@ const userNumberOne = document.querySelectorAll(".btn-number");
                 let numberSelect = button.textContent;
                 firstDisplayNumber = firstDisplayNumber + numberSelect;
                 numberDisplay.textContent = firstDisplayNumber;
-                stringConvert = parseInt(firstDisplayNumber)
+                stringConvert = parseFloat(firstDisplayNumber)
         }})
     }
 
@@ -56,7 +56,7 @@ const userNumberTwo = document.querySelectorAll(".btn-number");
                 let numberSelect = button.textContent;
                 secondDisplayNumber = secondDisplayNumber + numberSelect;
                 numberDisplay.textContent = firstDisplayNumber + " " + operatorSelect + " " + secondDisplayNumber;
-                stringConvertTwo = parseInt(secondDisplayNumber)
+                stringConvertTwo = parseFloat(secondDisplayNumber)
                 
         }})
     }
@@ -141,11 +141,11 @@ const operate = function (){
         if (operatorChosen === false){
         firstDisplayNumber = firstDisplayNumber.slice(0, -1);
         numberDisplay.textContent = firstDisplayNumber;
-        stringConvert = parseInt(firstDisplayNumber)
+        stringConvert = parseFloat(firstDisplayNumber)
     } else if (operatorChosen === true){
         secondDisplayNumber = secondDisplayNumber.slice(0, -1)
         numberDisplay.textContent = firstDisplayNumber + " " + operatorSelect + " " + secondDisplayNumber;
-        stringConvertTwo = parseInt(secondDisplayNumber)
+        stringConvertTwo = parseFloat(secondDisplayNumber)
     }
     if (firstDisplayNumber === ""){
         numberDisplay.textContent = "0";
@@ -160,7 +160,7 @@ const operate = function (){
         numberSelect = createDecimalBtn.textContent;
         firstDisplayNumber = firstDisplayNumber + numberSelect;
         numberDisplay.textContent = firstDisplayNumber;
-        stringConvert = parseInt(firstDisplayNumber)
+        stringConvert = parseFloat(firstDisplayNumber)
 
         if (firstDisplayNumber.includes(".")){
             createDecimalBtn.disabled = true;
@@ -169,7 +169,7 @@ const operate = function (){
         numberSelect = createDecimalBtn.textContent;
         secondDisplayNumber = secondDisplayNumber + numberSelect;
         numberDisplay.textContent = firstDisplayNumber + " " + operatorSelect + " " + secondDisplayNumber;
-        stringConvertTwo = parseInt(secondDisplayNumber)
+        stringConvertTwo = parseFloat(secondDisplayNumber)
 
         if (secondDisplayNumber.includes(".")){
             createDecimalBtn.disabled = true;
