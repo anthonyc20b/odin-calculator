@@ -68,6 +68,7 @@ finalCalculation.addEventListener("click", () => {
     stringConvert = finalResult; // Sets the final result as the current number so you can keep calculating
     firstDisplayNumber = finalResult; // Shows the final result as the current number so you can keep calculating on screen
     secondDisplayNumber = "";
+    operatorChosen = false;
 })
 
 const disableButtons = function (){
@@ -116,3 +117,27 @@ const operate = function (){
         return finalResult;
     }
     }
+
+    // Create the logic for the plus/minus button to change from positive to negative
+    const positiveNegativeBtn = document.querySelector("#btn-plusminus")
+    positiveNegativeBtn.addEventListener("click", () => {
+    }) // Tested will add in to use later but does return to console.log
+
+    // Create the function for the delete/backspace button. Slices the last value off of the string
+    // Then updates the display and variable for the calculation.
+    const createBackspaceBtn = document.querySelector("#btn-delete")
+    createBackspaceBtn.addEventListener("click", () => {
+        if (operatorChosen === false){
+        firstDisplayNumber = firstDisplayNumber.slice(0, -1);
+        numberDisplay.textContent = firstDisplayNumber;
+        stringConvert = parseInt(firstDisplayNumber)
+    } else if (operatorChosen === true){
+        secondDisplayNumber = secondDisplayNumber.slice(0, -1)
+        numberDisplay.textContent = firstDisplayNumber + " " + operatorSelect + " " + secondDisplayNumber;
+        stringConvertTwo = parseInt(secondDisplayNumber)
+    }
+
+        if (firstDisplayNumber === ""){
+            numberDisplay.textContent = "0";
+        }
+    })
