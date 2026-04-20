@@ -72,10 +72,17 @@ finalCalculation.addEventListener("click", () => {
 })
 
 const disableButtons = function (){
-    userNumberOne.forEach(button => {button.disabled = true;});
-    userNumberTwo.forEach(button => {button.disabled = true;});
-    userOperator.forEach(button => {button.disabled = true;});
+    userNumberOne.forEach(button => {button.disabled = true; button.style.pointerEvents = "none"});
+    userNumberTwo.forEach(button => {button.disabled = true; button.style.pointerEvents = "none"});
+    userOperator.forEach(button => {button.disabled = true; button.style.pointerEvents = "none"});
     finalCalculation.disabled = true;
+    finalCalculation.style.pointerEvents = "none";
+    createBackspaceBtn.disabled = true;
+    createBackspaceBtn.style.pointerEvents = "none";
+    createDecimalBtn.disabled = true;
+    createDecimalBtn.style.pointerEvents = "none";
+    positiveNegativeBtn.disabled = true;
+    positiveNegativeBtn.style.pointerEvents = "none";
 }
 
 const operate = function (){
@@ -139,5 +146,19 @@ const operate = function (){
     if (firstDisplayNumber === ""){
         numberDisplay.textContent = "0";
     }
-    
+
+    })
+
+    // Create the logic and function for decimal button
+    const createDecimalBtn = document.querySelector("#btn-decimal")
+    createDecimalBtn.addEventListener("click", () => {
+        numberSelect = createDecimalBtn.textContent;
+        firstDisplayNumber = firstDisplayNumber + numberSelect;
+        numberDisplay.textContent = firstDisplayNumber;
+        stringConvert = parseInt(firstDisplayNumber)
+
+        if (firstDisplayNumber.includes(".")){
+            createDecimalBtn.disabled = true;
+            createDecimalBtn.style.pointerEvents = "none";
+        }
     })
