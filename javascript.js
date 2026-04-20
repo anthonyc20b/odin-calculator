@@ -151,9 +151,18 @@ const operate = function (){
         numberDisplay.textContent = "0";
     }
 
+    //Re-enable decimal button if removed from the string
+    if (!firstDisplayNumber.includes(".")){
+        createDecimalBtn.disabled = false;
+        createDecimalBtn.style.pointerEvents = "auto";
+        } else if (!secondDisplayNumber.includes(".")){
+        createDecimalBtn.disabled = false;
+        createDecimalBtn.style.pointerEvents = "auto";
+        }
     })
 
-    // Create the logic and function for decimal button
+    // Create the logic and function for decimal button. Follows same screen and variable
+    // Update as used in the numbers above to tap into resst of calculator logic.
     const createDecimalBtn = document.querySelector("#btn-decimal")
     createDecimalBtn.addEventListener("click", () => {
         if (operatorChosen === false){
