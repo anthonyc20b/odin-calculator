@@ -61,3 +61,10 @@ button {
 button:hover {
     background-color: rgb(188, 200, 188);
 }
+
+.btn-operator {
+    background-color: orange;
+}
+.btn-operator:hover {
+    background-color: rgb(178, 116, 1);
+}
