@@ -41,6 +41,10 @@ const userOperator = document.querySelectorAll(".btn-operator");
             operatorSelect = button.textContent;
             numberDisplay.textContent = firstDisplayNumber + " " + operatorSelect;
             operatorChosen = true;
+
+            //Re-enable the decimal button if needed as we are onto second number
+            createDecimalBtn.disabled = false;
+            createDecimalBtn.style.pointerEvents = "auto";
         })
     }
 
@@ -152,6 +156,7 @@ const operate = function (){
     // Create the logic and function for decimal button
     const createDecimalBtn = document.querySelector("#btn-decimal")
     createDecimalBtn.addEventListener("click", () => {
+        if (operatorChosen === false){
         numberSelect = createDecimalBtn.textContent;
         firstDisplayNumber = firstDisplayNumber + numberSelect;
         numberDisplay.textContent = firstDisplayNumber;
@@ -160,5 +165,15 @@ const operate = function (){
         if (firstDisplayNumber.includes(".")){
             createDecimalBtn.disabled = true;
             createDecimalBtn.style.pointerEvents = "none";
+        }} else if (operatorChosen === true){
+        numberSelect = createDecimalBtn.textContent;
+        secondDisplayNumber = secondDisplayNumber + numberSelect;
+        numberDisplay.textContent = firstDisplayNumber + " " + operatorSelect + " " + secondDisplayNumber;
+        stringConvertTwo = parseInt(secondDisplayNumber)
+
+        if (secondDisplayNumber.includes(".")){
+            createDecimalBtn.disabled = true;
+            createDecimalBtn.style.pointerEvents = "none";
+        }
         }
     })
