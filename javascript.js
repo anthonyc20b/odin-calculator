@@ -20,6 +20,11 @@ const userNumberOne = document.querySelectorAll(".btn-number");
         button.addEventListener("click", () => {
             if (operatorChosen === false){
                 let numberSelect = button.textContent;
+
+                if (numberSelect === "0" && firstDisplayNumber.length === 0){
+                    return;
+                } // Check to make sure that 0 has not been entered multiple times as the first number, repeated again in userNumberTwo
+
                 firstDisplayNumber = firstDisplayNumber + numberSelect;
                 numberDisplay.textContent = firstDisplayNumber;
                 stringConvert = parseFloat(firstDisplayNumber)
@@ -54,6 +59,9 @@ const userNumberTwo = document.querySelectorAll(".btn-number");
         button.addEventListener("click", () => {
             if (operatorChosen === true){
                 let numberSelect = button.textContent;
+                if (numberSelect === "0" && secondDisplayNumber.length === 0){
+                    return;
+                }
                 secondDisplayNumber = secondDisplayNumber + numberSelect;
                 numberDisplay.textContent = firstDisplayNumber + " " + operatorSelect + " " + secondDisplayNumber;
                 stringConvertTwo = parseFloat(secondDisplayNumber)
