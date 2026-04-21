@@ -70,12 +70,12 @@ finalCalculation.addEventListener("click", () => {
 
     numberDisplay.textContent = finalResult;
     stringConvert = finalResult; // Sets the final result as the current number so you can keep calculating
-    firstDisplayNumber = finalResult; // Shows the final result as the current number so you can keep calculating on screen
+    firstDisplayNumber = finalResult.toString(); // Shows the final result as the current number so you can keep calculating on screen
     secondDisplayNumber = "";
     operatorChosen = false;
 })
 
-const disableButtons = function (){
+const disableButtons = function (){ // Disable all button functions besides clear and turn off CSS hover styling
     userNumberOne.forEach(button => {button.disabled = true; button.style.pointerEvents = "none"});
     userNumberTwo.forEach(button => {button.disabled = true; button.style.pointerEvents = "none"});
     userOperator.forEach(button => {button.disabled = true; button.style.pointerEvents = "none"});
@@ -132,7 +132,7 @@ const operate = function (){
     // Create the logic for the plus/minus button to change from positive to negative
     const positiveNegativeBtn = document.querySelector("#btn-plusminus")
     positiveNegativeBtn.addEventListener("click", () => {
-        if (operatorChosen === false){
+        if (operatorChosen === false && firstDisplayNumber != "" && firstDisplayNumber != "0"){ // Make sure that we are on number one and it is not equal to 0
             
             if (!firstDisplayNumber.includes("-")){ // If first number does not have a negative add a negative
                 firstDisplayNumber = "-" + firstDisplayNumber;
@@ -143,7 +143,7 @@ const operate = function (){
                 numberDisplay.textContent = firstDisplayNumber;
                 stringConvert = parseFloat(firstDisplayNumber);
         }
-    } else if (operatorChosen === true){
+    } else if (operatorChosen === true && secondDisplayNumber != "" && secondDisplayNumber != "0"){
         if (!secondDisplayNumber.includes("-")) {
             secondDisplayNumber = "-" + secondDisplayNumber;
             numberDisplay.textContent = firstDisplayNumber + " " + operatorSelect + " " + secondDisplayNumber;
