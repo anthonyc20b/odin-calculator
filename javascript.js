@@ -132,7 +132,31 @@ const operate = function (){
     // Create the logic for the plus/minus button to change from positive to negative
     const positiveNegativeBtn = document.querySelector("#btn-plusminus")
     positiveNegativeBtn.addEventListener("click", () => {
-    }) // Tested will add in to use later but does return to console.log
+        if (operatorChosen === false){
+            
+            if (!firstDisplayNumber.includes("-")){ // If first number does not have a negative add a negative
+                firstDisplayNumber = "-" + firstDisplayNumber;
+                numberDisplay.textContent = firstDisplayNumber;
+                stringConvert = parseFloat(firstDisplayNumber);
+            } else if (firstDisplayNumber.includes("-")){ // If first number does have a negative remove the negative
+                firstDisplayNumber = firstDisplayNumber.slice(1);
+                numberDisplay.textContent = firstDisplayNumber;
+                stringConvert = parseFloat(firstDisplayNumber);
+        }
+    } else if (operatorChosen === true){
+        if (!secondDisplayNumber.includes("-")) {
+            secondDisplayNumber = "-" + secondDisplayNumber;
+            numberDisplay.textContent = firstDisplayNumber + " " + operatorSelect + " " + secondDisplayNumber;
+            stringConvertTwo = parseFloat(secondDisplayNumber);
+        } else if (secondDisplayNumber.includes("-")){
+            secondDisplayNumber = secondDisplayNumber.slice(1);
+            numberDisplay.textContent = firstDisplayNumber + " " + operatorSelect + " " + secondDisplayNumber;
+            stringConvertTwo = parseFloat(secondDisplayNumber);
+        }
+        
+    }
+
+    })
 
     // Create the function for the delete/backspace button. Slices the last value off of the string
     // Then updates the display and variable for the calculation.
@@ -151,7 +175,7 @@ const operate = function (){
         numberDisplay.textContent = "0";
     }
 
-    //Re-enable decimal button if removed from the string
+    //Re-enable decimal button if removed from the string, updates on the backspace function
     if (!firstDisplayNumber.includes(".")){
         createDecimalBtn.disabled = false;
         createDecimalBtn.style.pointerEvents = "auto";
