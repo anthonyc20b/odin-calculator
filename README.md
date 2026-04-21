@@ -34,7 +34,7 @@ A fully functional browser-based calculator built with HTML, CSS, and JavaScript
 
 ## 💡 What I Learned
 
-This project pushed me further than I expected. The core logic came together quickly, but the real challenge was **DOM manipulation** and **catching edge cases** — things like what happens when a user hits an operator twice, or divides by zero.
+This project pushed me further than I expected. The core logic came together quickly, but the real challenge was **DOM manipulation** and **catching edge cases**. Things like what happens when a user hits an operator twice, or divides by zero.
 
 What stood out most was the experience of going back into existing code to fix bugs I hadn't anticipated. It taught me to write with more foresight, and reinforced that refactoring is a normal and valuable part of development, not a sign that something went wrong.
 
