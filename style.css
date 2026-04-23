@@ -58,20 +58,32 @@ button {
     text-align: center;
 }
 
-button:hover {
-    background-color: rgb(188, 200, 188);
-}
-
 .btn-operator, #btn-equals {
-    background-color: orange;
-}
-.btn-operator:hover, #btn-equals:hover {
-    background-color: rgb(178, 116, 1);
-}
-
+        background-color: orange;
+    }
+    
 #btn-modulo {
     background-color: honeydew;
 }
-#btn-modulo:hover {
-    background-color: rgb(188, 200, 188);
+
+@media (hover: hover){ /* Remove the hover status when the user is on mobile, looks for a pointer */
+    button:hover {
+        background-color: rgb(188, 200, 188);
+    }
+    .btn-operator:hover, #btn-equals:hover {
+        background-color: rgb(178, 116, 1);
+    }
+    #btn-modulo:hover {
+        background-color: rgb(188, 200, 188);
+    }
 }
+
+    button:active {
+        background-color: rgb(188, 200, 188);
+    }
+    .btn-operator:active, #btn-equals:active {
+        background-color: rgb(178, 116, 1);
+    }
+    #btn-modulo:active {
+        background-color: rgb(188, 200, 188);
+    }
