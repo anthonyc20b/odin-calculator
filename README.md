@@ -17,9 +17,9 @@ A fully functional browser-based calculator built with HTML, CSS, and JavaScript
 - Four core operations — addition, subtraction, multiplication, and division
 - Chained calculations without needing to reset
 - Decimal, modulo, and positive/negative (`+/-`) support
-- Clear (`AC`) and delete (`DEL`) buttons
-- Keyboard input support for numbers and operators
-- Edge case handling (e.g. division by zero, repeated operators)
+- Clear (`C`) and delete (`D`) buttons
+- Keyboard input support for numbers, operators, and all other functions (exl. `+/-`)
+- Edge case handling (e.g. division by zero, repeated operators, scientific notation)
 - Custom styling
 - Mobile friendly design and usage
 
