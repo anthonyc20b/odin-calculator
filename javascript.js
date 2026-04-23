@@ -219,6 +219,10 @@ const operate = function (){
                 matchingButtonOperator.click();
             break;
 
+            case ".":
+                createDecimalBtn.click();
+            break;
+
             case "Enter":
                 finalCalculation.click();
             break;
