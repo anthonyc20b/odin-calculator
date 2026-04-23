@@ -15,13 +15,13 @@ let operatorSelect = ""; // Used to store what operator the user selected
 const numberDisplay = document.querySelector("#current-number");
 
 // Gets the first number from the user based on selection, updates the display, and allows for multiple digit numbers
-const userNumberOne = document.querySelectorAll(".btn-number");
-    for (let button of userNumberOne){
+const userNumber = document.querySelectorAll(".btn-number");
+    for (let button of userNumber){
         button.addEventListener("click", () => {
             if (operatorChosen === false){
                 let numberSelect = button.textContent;
 
-                // Check to make sure that 0 has not been entered multiple times as the first number, repeated again in userNumberTwo
+                // Check to make sure that 0 has not been entered multiple times as the first number
                 if (numberSelect === "0" && firstDisplayNumber.length === 0){
                     return;
                 } 
@@ -30,8 +30,18 @@ const userNumberOne = document.querySelectorAll(".btn-number");
                 numberDisplay.textContent = firstDisplayNumber;
                 scrollDisplay();
                 stringConvert = parseFloat(firstDisplayNumber)
-        }})
-    }
+                
+        } else if (operatorChosen === true){
+                let numberSelect = button.textContent;
+                if (numberSelect === "0" && secondDisplayNumber.length === 0){
+                    return;
+                }
+                secondDisplayNumber = secondDisplayNumber + numberSelect;
+                numberDisplay.textContent = firstDisplayNumber + " " + operatorSelect + " " + secondDisplayNumber;
+                stringConvertTwo = parseFloat(secondDisplayNumber)
+                scrollDisplay();
+            }
+        })}
 
 const userOperator = document.querySelectorAll(".btn-operator");
     for (let button of userOperator){
@@ -57,20 +67,20 @@ const userOperator = document.querySelectorAll(".btn-operator");
     }
 
 // Gets the second number from the user and converts it to a string from the button output
-const userNumberTwo = document.querySelectorAll(".btn-number");
-    for (let button of userNumberTwo) {
-        button.addEventListener("click", () => {
-            if (operatorChosen === true){
-                let numberSelect = button.textContent;
-                if (numberSelect === "0" && secondDisplayNumber.length === 0){
-                    return;
-                }
-                secondDisplayNumber = secondDisplayNumber + numberSelect;
-                numberDisplay.textContent = firstDisplayNumber + " " + operatorSelect + " " + secondDisplayNumber;
-                stringConvertTwo = parseFloat(secondDisplayNumber)
-                scrollDisplay();
-        }})
-    }
+// const userNumberTwo = document.querySelectorAll(".btn-number");
+//     for (let button of userNumberTwo) {
+//         button.addEventListener("click", () => {
+//             if (operatorChosen === true){
+//                 let numberSelect = button.textContent;
+//                 if (numberSelect === "0" && secondDisplayNumber.length === 0){
+//                     return;
+//                 }
+//                 secondDisplayNumber = secondDisplayNumber + numberSelect;
+//                 numberDisplay.textContent = firstDisplayNumber + " " + operatorSelect + " " + secondDisplayNumber;
+//                 stringConvertTwo = parseFloat(secondDisplayNumber)
+//                 scrollDisplay();
+//         }})
+//     }
 
 // Equals button logic, listens for the click on = and runs the operate function while updating the variables to allow chain expressions
 const finalCalculation = document.querySelector("#btn-equals");
@@ -86,8 +96,7 @@ finalCalculation.addEventListener("click", () => {
 })
 
 const disableButtons = function (){ // Disable all button functions besides clear and turn off CSS hover styling
-    userNumberOne.forEach(button => {button.disabled = true; button.style.pointerEvents = "none"});
-    userNumberTwo.forEach(button => {button.disabled = true; button.style.pointerEvents = "none"});
+    userNumber.forEach(button => {button.disabled = true; button.style.pointerEvents = "none"});
     userOperator.forEach(button => {button.disabled = true; button.style.pointerEvents = "none"});
     finalCalculation.disabled = true;
     finalCalculation.style.pointerEvents = "none";
@@ -211,7 +220,7 @@ const operate = function (){
 
     document.addEventListener("keydown", (event) => {
         if (!isNaN(event.key)){
-            let numberButtonArray = Array.from(userNumberOne);
+            let numberButtonArray = Array.from(userNumber);
             const matchingButtonNum1 = numberButtonArray.find(button => button.textContent === event.key);
             matchingButtonNum1.click();
         }
