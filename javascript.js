@@ -251,6 +251,7 @@ const operate = function (){
             break;
 
             case "Escape":
+                event.preventDefault();
                 location.reload();
             break;
         }
