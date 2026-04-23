@@ -54,13 +54,18 @@ button {
 
 .calculator-display {
     background-color: lightgray;
-    flex-basis: 0%;
     border: 2px solid black;
     border-radius: 12px;
-    text-align: center;
     padding: 20px;
     white-space: nowrap;
-    overflow-x: scroll;
+    overflow-x: auto;
+    display: flex;
+    justify-content: flex-end;
+}
+
+#current-number {
+    flex-shrink: 0;
+    margin-left: auto;
 }
 
 .btn-operator, #btn-equals {
