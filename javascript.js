@@ -36,8 +36,6 @@ const userOperator = document.querySelectorAll(".btn-operator");
         button.addEventListener("click", () => {
             if (firstDisplayNumber != "" && operatorChosen === true && secondDisplayNumber != ""){ // Checks to make sure that if two operators are selected it runs the operate() function to allow chain expressions
                 let finalResult = operate();
-
-                finalResult = displayLimit(finalResult); // Check the display limit and ensure the number returns less than 16 and gets rounded up                numberDisplay.textContent = finalResult + " " + operatorSelect;
                 
                 firstDisplayNumber = finalResult; // Shows the final result as the current number so you can keep calculating on screen
                 stringConvert = finalResult; // Updates the backend logic to make the correct mathematical calculation
@@ -76,8 +74,6 @@ const userNumberTwo = document.querySelectorAll(".btn-number");
 const finalCalculation = document.querySelector("#btn-equals");
 finalCalculation.addEventListener("click", () => {
     let finalResult = operate();
-
-    finalResult = displayLimit(finalResult); // Check the display limit and ensure the number returns less than 16 and gets rounded up
 
     numberDisplay.textContent = finalResult;
     stringConvert = finalResult; // Sets the final result as the current number so you can keep calculating
@@ -125,26 +121,6 @@ const operate = function (){
             return "Error!";
         }
     };
-
-    // Check that the length of the return is not greater than 16 digits (Screen display limits)
-    const displayLimit = function (finalResult){
-    let totalLength = finalResult.toString().length;
-    let stringSplit = finalResult.toString().split(".");
-    let lengthBeforeDecim = stringSplit[0].length;
-    if (totalLength > 16) {
-        let roundingNum = 16 - lengthBeforeDecim;
-        
-        if (roundingNum > 0){ // Checks to see if a large number has at least 1 digit after the decimal
-        roundedFinal = finalResult.toFixed(roundingNum);
-        finalResult = parseFloat(roundedFinal);
-        return finalResult;
-        } else { // If the number is so large that there are no digits after the decimal then returns the rounded whole number
-            return Math.round(finalResult);
-        }
-    } else {
-        return finalResult;
-    }
-    }
 
     // Create the logic for the plus/minus button to change from positive to negative
     const positiveNegativeBtn = document.querySelector("#btn-plusminus")
