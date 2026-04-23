@@ -26,6 +26,7 @@ const userNumberOne = document.querySelectorAll(".btn-number");
                 } // Check to make sure that 0 has not been entered multiple times as the first number, repeated again in userNumberTwo
                 firstDisplayNumber = firstDisplayNumber + numberSelect;
                 numberDisplay.textContent = firstDisplayNumber;
+                updateDisplay();
                 stringConvert = parseFloat(firstDisplayNumber)
         }})
     }
@@ -41,10 +42,12 @@ const userOperator = document.querySelectorAll(".btn-operator");
                 firstDisplayNumber = finalResult; // Shows the final result as the current number so you can keep calculating on screen
                 stringConvert = finalResult; // Updates the backend logic to make the correct mathematical calculation
                 secondDisplayNumber = "";
+                updateDisplay();
             }
             operatorSelect = button.textContent;
             numberDisplay.textContent = firstDisplayNumber + " " + operatorSelect;
             operatorChosen = true;
+            updateDisplay();
 
             //Re-enable the decimal button if needed as we are onto second number
             createDecimalBtn.disabled = false;
@@ -64,7 +67,7 @@ const userNumberTwo = document.querySelectorAll(".btn-number");
                 secondDisplayNumber = secondDisplayNumber + numberSelect;
                 numberDisplay.textContent = firstDisplayNumber + " " + operatorSelect + " " + secondDisplayNumber;
                 stringConvertTwo = parseFloat(secondDisplayNumber)
-                
+                updateDisplay();
         }})
     }
 
@@ -80,6 +83,7 @@ finalCalculation.addEventListener("click", () => {
     firstDisplayNumber = finalResult.toString(); // Shows the final result as the current number so you can keep calculating on screen
     secondDisplayNumber = "";
     operatorChosen = false;
+    infinityRestart(finalResult);
 })
 
 const disableButtons = function (){ // Disable all button functions besides clear and turn off CSS hover styling
@@ -258,3 +262,17 @@ const operate = function (){
             break;
         }
     })
+
+    // Allows for the display to automatically be scrolled to the right, following user input and allowing for larger numbers and updates the display
+    // Refactors code to be easier to read and lest repetitive.
+    const displayScroll = document.querySelector(".calculator-display");
+    function updateDisplay() {
+        displayScroll.scrollLeft = displayScroll.scrollWidth;
+    }
+
+    // Below handles infinity edge case when too many numbers are placed, this is to disable the input and force a restart
+    function infinityRestart(value) {
+        if (value.includes("Infinity")){
+            disableButtons();
+        }
+    }
