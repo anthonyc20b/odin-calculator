@@ -218,3 +218,40 @@ const operate = function (){
         }
         }
     })
+
+    // From here on out is adding in the keyboard support. First checking to see if it is a number instead of writing a seperate case for each.
+    // Then adding cases to check if it is an operator or a different type of feature being called for the calculator
+
+    document.addEventListener("keydown", (event) => {
+        if (!isNaN(event.key)){
+            numberOneButtonArray = Array.from(userNumberOne);
+            const matchingButtonNum1 = numberOneButtonArray.find(button => button.textContent === event.key);
+            matchingButtonNum1.click();
+            console.log(event.key);
+        }
+        switch (event.key) {
+            case "+":
+            case "-":
+            case "/":
+            case "*":
+            case "%":
+                userOperatorButtonArray = Array.from(userOperator);
+                const matchingButtonOperator = userOperatorButtonArray.find(button => button.textContent === event.key);
+                matchingButtonOperator.click();
+                console.log(event.key);
+            break;
+
+            case "Enter":
+                finalCalculation.click();
+            break;
+
+            case "Delete":
+            case "Backspace":
+                createBackspaceBtn.click();
+            break;
+
+            case "Escape":
+                location.reload();
+            break;
+        }
+    })
