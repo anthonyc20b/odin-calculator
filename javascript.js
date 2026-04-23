@@ -232,7 +232,6 @@ const operate = function (){
             numberOneButtonArray = Array.from(userNumberOne);
             const matchingButtonNum1 = numberOneButtonArray.find(button => button.textContent === event.key);
             matchingButtonNum1.click();
-            console.log(event.key);
         }
         switch (event.key) {
             case "+":
@@ -243,7 +242,6 @@ const operate = function (){
                 userOperatorButtonArray = Array.from(userOperator);
                 const matchingButtonOperator = userOperatorButtonArray.find(button => button.textContent === event.key);
                 matchingButtonOperator.click();
-                console.log(event.key);
             break;
 
             case "Enter":
