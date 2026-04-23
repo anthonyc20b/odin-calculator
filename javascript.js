@@ -43,6 +43,7 @@ const userOperator = document.querySelectorAll(".btn-operator");
                 stringConvert = finalResult; // Updates the backend logic to make the correct mathematical calculation
                 secondDisplayNumber = "";
                 updateDisplay();
+                infinityRestart(finalResult);
             }
             operatorSelect = button.textContent;
             numberDisplay.textContent = firstDisplayNumber + " " + operatorSelect;
@@ -270,9 +271,9 @@ const operate = function (){
         displayScroll.scrollLeft = displayScroll.scrollWidth;
     }
 
-    // Below handles infinity edge case when too many numbers are placed, this is to disable the input and force a restart
+    // Below handles infinity edge case when the system returns infinity, this is to disable the input and force a restart
     function infinityRestart(value) {
-        if (value.includes("Infinity")){
+        if (value.toString().includes("Infinity")){
             disableButtons();
         }
     }
