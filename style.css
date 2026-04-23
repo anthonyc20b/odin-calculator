@@ -1,8 +1,10 @@
 body {
     display: flex;
-    justify-content: space-around;
-    padding: 200px;
-    background-color:bisque
+    justify-content: center;
+    flex-direction: row;
+    background-color:bisque;
+    min-height: 100vh;
+    align-items: center;
 }
 
 .calculator-body {
@@ -61,7 +63,7 @@ button {
 .btn-operator, #btn-equals {
         background-color: orange;
     }
-    
+
 #btn-modulo {
     background-color: honeydew;
 }
@@ -78,12 +80,13 @@ button {
     }
 }
 
-    button:active {
-        background-color: rgb(188, 200, 188);
-    }
-    .btn-operator:active, #btn-equals:active {
-        background-color: rgb(178, 116, 1);
-    }
-    #btn-modulo:active {
-        background-color: rgb(188, 200, 188);
-    }
+/* When button is depressed on touchscreen shows the same affect as hover */
+button:active {
+    background-color: rgb(188, 200, 188);
+}
+.btn-operator:active, #btn-equals:active {
+    background-color: rgb(178, 116, 1);
+}
+#btn-modulo:active {
+    background-color: rgb(188, 200, 188);
+}
