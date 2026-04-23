@@ -59,6 +59,8 @@ button {
     border-radius: 12px;
     text-align: center;
     padding: 20px;
+    white-space: nowrap;
+    overflow-x: scroll;
 }
 
 .btn-operator, #btn-equals {
