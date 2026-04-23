@@ -8,7 +8,7 @@ A fully functional browser-based calculator built with HTML, CSS, and JavaScript
 
 ## 📸 Screenshot
 
-![Calculator Screenshot](images/odin-calculator)
+![Calculator Screenshot](images/odin-calculator.png)
 
 ---
 
