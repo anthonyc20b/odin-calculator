@@ -18,9 +18,10 @@ A fully functional browser-based calculator built with HTML, CSS, and JavaScript
 - Chained calculations without needing to reset
 - Decimal, modulo, and positive/negative (`+/-`) support
 - Clear (`AC`) and delete (`DEL`) buttons
-- Keyboard input support
+- Keyboard input support for numbers and operators
 - Edge case handling (e.g. division by zero, repeated operators)
 - Custom styling
+- Mobile friendly usage
 
 ---
 
