@@ -66,22 +66,6 @@ const userOperator = document.querySelectorAll(".btn-operator");
         })
     }
 
-// Gets the second number from the user and converts it to a string from the button output
-// const userNumberTwo = document.querySelectorAll(".btn-number");
-//     for (let button of userNumberTwo) {
-//         button.addEventListener("click", () => {
-//             if (operatorChosen === true){
-//                 let numberSelect = button.textContent;
-//                 if (numberSelect === "0" && secondDisplayNumber.length === 0){
-//                     return;
-//                 }
-//                 secondDisplayNumber = secondDisplayNumber + numberSelect;
-//                 numberDisplay.textContent = firstDisplayNumber + " " + operatorSelect + " " + secondDisplayNumber;
-//                 stringConvertTwo = parseFloat(secondDisplayNumber)
-//                 scrollDisplay();
-//         }})
-//     }
-
 // Equals button logic, listens for the click on = and runs the operate function while updating the variables to allow chain expressions
 const finalCalculation = document.querySelector("#btn-equals");
 finalCalculation.addEventListener("click", () => {
