@@ -24,9 +24,6 @@ const userNumberOne = document.querySelectorAll(".btn-number");
                 if (numberSelect === "0" && firstDisplayNumber.length === 0){
                     return;
                 } // Check to make sure that 0 has not been entered multiple times as the first number, repeated again in userNumberTwo
-                if (firstDisplayNumber.length >= 7){ // Ensure the user cannot type past the display limit
-                    return;
-                }
                 firstDisplayNumber = firstDisplayNumber + numberSelect;
                 numberDisplay.textContent = firstDisplayNumber;
                 stringConvert = parseFloat(firstDisplayNumber)
@@ -62,9 +59,6 @@ const userNumberTwo = document.querySelectorAll(".btn-number");
             if (operatorChosen === true){
                 let numberSelect = button.textContent;
                 if (numberSelect === "0" && secondDisplayNumber.length === 0){
-                    return;
-                }
-                if (secondDisplayNumber.length >= 7){ // Ensure the user cannot type past the display limit
                     return;
                 }
                 secondDisplayNumber = secondDisplayNumber + numberSelect;
@@ -129,14 +123,19 @@ const operate = function (){
 
     // Check that the length of the return is not greater than 16 digits (Screen display limits)
     const displayLimit = function (finalResult){
-    let totalLength = finalResult.toString().length
+    let totalLength = finalResult.toString().length;
     let stringSplit = finalResult.toString().split(".");
     let lengthBeforeDecim = stringSplit[0].length;
     if (totalLength > 16) {
         let roundingNum = 16 - lengthBeforeDecim;
+        
+        if (roundingNum > 0){ // Checks to see if a large number has at least 1 digit after the decimal
         roundedFinal = finalResult.toFixed(roundingNum);
         finalResult = parseFloat(roundedFinal);
         return finalResult;
+        } else { // If the number is so large that there are no digits after the decimal then returns the rounded whole number
+            return Math.round(finalResult);
+        }
     } else {
         return finalResult;
     }
