@@ -97,3 +97,7 @@ button:active {
 #btn-modulo:active {
     background-color: rgb(188, 200, 188);
 }
+
+.footer {
+    text-align: center;
+}
