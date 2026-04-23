@@ -24,7 +24,9 @@ const userNumberOne = document.querySelectorAll(".btn-number");
                 if (numberSelect === "0" && firstDisplayNumber.length === 0){
                     return;
                 } // Check to make sure that 0 has not been entered multiple times as the first number, repeated again in userNumberTwo
-
+                if (firstDisplayNumber.length >= 7){ // Ensure the user cannot type past the display limit
+                    return;
+                }
                 firstDisplayNumber = firstDisplayNumber + numberSelect;
                 numberDisplay.textContent = firstDisplayNumber;
                 stringConvert = parseFloat(firstDisplayNumber)
@@ -60,6 +62,9 @@ const userNumberTwo = document.querySelectorAll(".btn-number");
             if (operatorChosen === true){
                 let numberSelect = button.textContent;
                 if (numberSelect === "0" && secondDisplayNumber.length === 0){
+                    return;
+                }
+                if (secondDisplayNumber.length >= 7){ // Ensure the user cannot type past the display limit
                     return;
                 }
                 secondDisplayNumber = secondDisplayNumber + numberSelect;
