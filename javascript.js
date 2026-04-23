@@ -21,12 +21,14 @@ const userNumberOne = document.querySelectorAll(".btn-number");
             if (operatorChosen === false){
                 let numberSelect = button.textContent;
 
+                // Check to make sure that 0 has not been entered multiple times as the first number, repeated again in userNumberTwo
                 if (numberSelect === "0" && firstDisplayNumber.length === 0){
                     return;
-                } // Check to make sure that 0 has not been entered multiple times as the first number, repeated again in userNumberTwo
+                } 
+                // Update the display with whatever numbers we are adding in, also adds in the scrolling as well and converts from a string to a number.
                 firstDisplayNumber = firstDisplayNumber + numberSelect;
                 numberDisplay.textContent = firstDisplayNumber;
-                updateDisplay();
+                scrollDisplay();
                 stringConvert = parseFloat(firstDisplayNumber)
         }})
     }
@@ -40,13 +42,13 @@ const userOperator = document.querySelectorAll(".btn-operator");
                 firstDisplayNumber = finalResult; // Shows the final result as the current number so you can keep calculating on screen
                 stringConvert = finalResult; // Updates the backend logic to make the correct mathematical calculation
                 secondDisplayNumber = "";
-                updateDisplay();
+                scrollDisplay();
                 infinityRestart(finalResult);
             }
             operatorSelect = button.textContent;
             numberDisplay.textContent = firstDisplayNumber + " " + operatorSelect;
             operatorChosen = true;
-            updateDisplay();
+            scrollDisplay();
 
             //Re-enable the decimal button if needed as we are onto second number
             createDecimalBtn.disabled = false;
@@ -66,7 +68,7 @@ const userNumberTwo = document.querySelectorAll(".btn-number");
                 secondDisplayNumber = secondDisplayNumber + numberSelect;
                 numberDisplay.textContent = firstDisplayNumber + " " + operatorSelect + " " + secondDisplayNumber;
                 stringConvertTwo = parseFloat(secondDisplayNumber)
-                updateDisplay();
+                scrollDisplay();
         }})
     }
 
@@ -179,7 +181,7 @@ const operate = function (){
     })
 
     // Create the logic and function for decimal button. Follows same screen and variable
-    // Update as used in the numbers above to tap into resst of calculator logic.
+    // Update as used in the numbers above to tap into rest of calculator logic.
     const createDecimalBtn = document.querySelector("#btn-decimal")
     createDecimalBtn.addEventListener("click", () => {
         if (operatorChosen === false){
@@ -209,8 +211,8 @@ const operate = function (){
 
     document.addEventListener("keydown", (event) => {
         if (!isNaN(event.key)){
-            numberOneButtonArray = Array.from(userNumberOne);
-            const matchingButtonNum1 = numberOneButtonArray.find(button => button.textContent === event.key);
+            let numberButtonArray = Array.from(userNumberOne);
+            const matchingButtonNum1 = numberButtonArray.find(button => button.textContent === event.key);
             matchingButtonNum1.click();
         }
         switch (event.key) {
@@ -219,7 +221,7 @@ const operate = function (){
             case "/":
             case "*":
             case "%":
-                userOperatorButtonArray = Array.from(userOperator);
+                let userOperatorButtonArray = Array.from(userOperator);
                 const matchingButtonOperator = userOperatorButtonArray.find(button => button.textContent === event.key);
                 matchingButtonOperator.click();
             break;
@@ -243,7 +245,7 @@ const operate = function (){
     // Allows for the display to automatically be scrolled to the right, following user input and allowing for larger numbers and updates the display
     // Refactors code to be easier to read and lest repetitive.
     const displayScroll = document.querySelector(".calculator-display");
-    function updateDisplay() {
+    function scrollDisplay() {
         displayScroll.scrollLeft = displayScroll.scrollWidth;
     }
 
