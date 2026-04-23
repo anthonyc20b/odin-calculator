@@ -21,7 +21,7 @@ A fully functional browser-based calculator built with HTML, CSS, and JavaScript
 - Keyboard input support for numbers and operators
 - Edge case handling (e.g. division by zero, repeated operators)
 - Custom styling
-- Mobile friendly usage
+- Mobile friendly design and usage
 
 ---
 
