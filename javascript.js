@@ -224,6 +224,7 @@ const operate = function (){
             break;
 
             case "Enter":
+            case "=":
                 finalCalculation.click();
             break;
 
