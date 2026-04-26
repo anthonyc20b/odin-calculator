@@ -22,36 +22,21 @@ body {
     border-radius: 12px;
 }
 
-.row-one {
-    display: flex;
-}
-
-.row-two {
-    display: flex;
-}
-
-.row-three {
-    display: flex;
-}
-
-.row-four {
-    display: flex;
-}
-
-.row-five {
+.row-one, .row-two, .row-three, .row-four, .row-five {
     display: flex;
 }
 
 button {
     background-color: honeydew;
     border: 2px solid gray;
-    border-radius: 20px;
+    border-radius: 25px;
     padding: 25px;
     display: flex;
-    flex-grow: 1;
     justify-content: center;
     color: black;
     font-size: 18px;
+    flex: 1;
+    margin: 1px;
 }
 
 .calculator-display {
