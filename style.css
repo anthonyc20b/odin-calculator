@@ -5,7 +5,15 @@ body {
     background-color:bisque;
     min-height: 100vh;
     align-items: center;
+    overflow-y: hidden;
 }
+
+/* Disable zoom function for mobile use */
+html {
+  touch-action: manipulation; /* For mobile devices */
+  -ms-touch-action: manipulation; /* IE10+ */
+}
+
 
 .calculator-body {
     border: 2px solid black;
