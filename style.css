@@ -45,11 +45,13 @@ body {
 button {
     background-color: honeydew;
     border: 2px solid gray;
-    border-radius: 12px;
+    border-radius: 20px;
     padding: 25px;
     display: flex;
     flex-grow: 1;
     justify-content: center;
+    color: black;
+    font-size: 18px;
 }
 
 .calculator-display {
