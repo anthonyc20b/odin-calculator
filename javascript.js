@@ -33,7 +33,7 @@ const userNumber = document.querySelectorAll(".btn-number");
                 
         } else if (operatorChosen === true){
                 let numberSelect = button.textContent;
-                if (numberSelect === "0" && secondDisplayNumber.length === 0){
+                if (numberSelect === "0" && secondDisplayNumber.length === 1){
                     return;
                 }
                 secondDisplayNumber = secondDisplayNumber + numberSelect;
@@ -234,8 +234,7 @@ const operate = function (){
             break;
 
             case "Escape":
-                event.preventDefault();
-                location.reload();
+                createClearBtn.click();
             break;
         }
     })
@@ -253,3 +252,13 @@ const operate = function (){
             disableButtons();
         }
     }
+
+    // Add in 'AC' button to clear out display variables using DOM instead of reloading the page. Just resets all of the variables and display when event listener fires.
+    const createClearBtn = document.querySelector("#btn-clear");
+    createClearBtn.addEventListener("click", () => {
+        firstDisplayNumber = "";
+        operatorSelect = "";
+        operatorChosen = false;
+        secondDisplayNumber = "";
+        if (firstDisplayNumber === ""){numberDisplay.textContent = "0";};
+    })
