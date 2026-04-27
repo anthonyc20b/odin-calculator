@@ -92,6 +92,19 @@ const disableButtons = function (){ // Disable all button functions besides clea
     positiveNegativeBtn.style.pointerEvents = "none";
 }
 
+const enableButtons = function (){ // Enable all button functions and bring back CSS hover styling
+    userNumber.forEach(button => {button.disabled = false; button.style.pointerEvents = "auto"});
+    userOperator.forEach(button => {button.disabled = false; button.style.pointerEvents = "auto"});
+    finalCalculation.disabled = false;
+    finalCalculation.style.pointerEvents = "auto";
+    createBackspaceBtn.disabled = false;
+    createBackspaceBtn.style.pointerEvents = "auto";
+    createDecimalBtn.disabled = false;
+    createDecimalBtn.style.pointerEvents = "auto";
+    positiveNegativeBtn.disabled = false;
+    positiveNegativeBtn.style.pointerEvents = "auto";
+}
+
 const operate = function (){
         let a = stringConvert;
         let b = stringConvertTwo;
@@ -260,5 +273,6 @@ const operate = function (){
         operatorSelect = "";
         operatorChosen = false;
         secondDisplayNumber = "";
+        enableButtons(); // Bring the buttons back after a division by 0 failure
         if (firstDisplayNumber === ""){numberDisplay.textContent = "0";};
     })
