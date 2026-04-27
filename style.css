@@ -47,6 +47,11 @@ button {
     margin: 1px;
 }
 
+button:disabled {
+    color: gray;
+    cursor: not-allowed;
+  }
+
 .calculator-display {
     background-color: lightgray;
     border-radius: 12px;
