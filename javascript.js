@@ -33,7 +33,7 @@ const userNumber = document.querySelectorAll(".btn-number");
                 
         } else if (operatorChosen === true){
                 let numberSelect = button.textContent;
-                if (numberSelect === "0" && secondDisplayNumber.length === 1){
+                if (numberSelect === "0" && secondDisplayNumber.length === 0){
                     return;
                 }
                 secondDisplayNumber = secondDisplayNumber + numberSelect;
@@ -52,6 +52,7 @@ const userOperator = document.querySelectorAll(".btn-operator");
                 firstDisplayNumber = finalResult; // Shows the final result as the current number so you can keep calculating on screen
                 stringConvert = finalResult; // Updates the backend logic to make the correct mathematical calculation
                 secondDisplayNumber = "";
+                stringConvertTwo = 0;
                 scrollDisplay();
                 infinityRestart(finalResult);
             }
@@ -75,6 +76,7 @@ finalCalculation.addEventListener("click", () => {
     stringConvert = finalResult; // Sets the final result as the current number so you can keep calculating
     firstDisplayNumber = finalResult.toString(); // Shows the final result as the current number so you can keep calculating on screen
     secondDisplayNumber = "";
+    stringConvertTwo = 0;
     operatorChosen = false;
     infinityRestart(finalResult);
 })
@@ -216,7 +218,7 @@ const operate = function (){
     // Then adding cases to check if it is an operator or a different type of feature being called for the calculator
 
     document.addEventListener("keydown", (event) => {
-        if (!isNaN(event.key)){
+        if (!isNaN(event.key) && event.key.length === 1){ // Ensure that event.key is a number and does not contain = sign
             let numberButtonArray = Array.from(userNumber);
             const matchingButtonNum1 = numberButtonArray.find(button => button.textContent === event.key);
             matchingButtonNum1.click();
@@ -270,9 +272,12 @@ const operate = function (){
     const createClearBtn = document.querySelector("#btn-clear");
     createClearBtn.addEventListener("click", () => {
         firstDisplayNumber = "";
+        stringConvert = 0;
         operatorSelect = "";
         operatorChosen = false;
         secondDisplayNumber = "";
+        stringConvertTwo = 0;
+        createClearBtn.blur(); // Remove the focus off of the button once selected to allow keyboard/mouse support switching
         enableButtons(); // Bring the buttons back after a division by 0 failure
         if (firstDisplayNumber === ""){numberDisplay.textContent = "0";};
     })
